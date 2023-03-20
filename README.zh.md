@@ -1,11 +1,9 @@
 # llmapi-server
-llmapi-server is an abstract backend that encapsulates a variety of large language models (LLM, such as ChatGPT, GPT-3, GPT-4, etc.), and provides simple access services through OpenAPI
+llmapi-server 是一个封装了多种大语言模型(LLM，如ChatGPT,GPT-3,GPT-4等)的抽象后端，并通过OpenAPI提供简单的访问服务
 
-[中文](README.zh.md)
+## 安装和运行
 
-## Install & Run
-
-1. run locally
+1. 本地安装运行
 ``` shell
 # python >= 3.8
 python3 -m pip install -r requirements.txt
@@ -13,38 +11,38 @@ python3 -m pip install -r requirements.txt
 python3 run_api_server.py
 ```
 
-2. run with docker
+2. 使用docker运行
 
 ``` shell
 ./build_docker.sh
 ./start_docker.sh
 ```
 
-## Visit server
+## 访问server
 
-1. Use the `curl` command to access:
+1. 使用curl命令访问:
 
 ``` shell
-# 1. Start a new session
+# 1. 开始一个session
 curl -X POST -H "Content-Type: application/json" -d '{"bot_type":"mock"}' http://127.0.0.1:5050/v1/chat/start
 # response sample: {"code":0,"msg":"Success","session":"123456"}
 
-# 2. chat with LLMs
+# 2. 和后端进行对话交互
 curl -X POST -H "Content-Type: application/json" -d '{"session":"123456","content":"hello"}' http://127.0.0.1:5050/v1/chat/ask
 # response sample: {"code":0,"msg":"Success","reply":"Text mock reply for your prompt:hello","timestamp":1678865301.0842562}
 
-# 3. Close the session and end chat
+# 3. 关闭session，结束对话
 curl -X POST -H "Content-Type: application/json" -d '{"session":"123456"}' http://127.0.0.1:5050/v1/chat/end
 # response: {"code":0,"msg":"Success"}
 ```
 
-2. Using command line tools:[llmapi_cli](https://github.com/llmapi-io/llmapi-cli)
+2. 使用[llmapi_cli](https://github.com/llmapi-io/llmapi-cli)命令工具访问
 
 ``` shell
 llmapi_cli --host="http://127.0.0.1:5050" --bot=mock
 ```
 
-3. Integrate in your python code with llmapi_cli module
+3. 在你的python代码中使用llmapi_cli库访问
 ``` python
 from llmapi_cli import LLMClient
 
@@ -55,9 +53,9 @@ rep = client.ask("hello")
 print(rep)
 ```
 
-## Plug into your LLM's backend !
+## 接入你自己的LLM后端
 
-1. You need to create a new backend name in the backend directory (assumed to be `newllm`), you can directly `cp -r mock newllm`
-2. Referring to the implementation of `mock`, change the backend name to `newllm`
-3. In the `newllm` directory, add the necessary dependencies, and all related development is bound to this directory
-4. Add support for `newllm` in `backend.py`
+1. 需要在backend目录内新建一个新的后端名称（假设为`newllm`）,可以直接`cp -r mock newllm`
+2. 参照`mock`的实现，更改后端名称为`newllm`
+3. 在`newllm`目录下，添加必要的依赖，所有相关的开发约束于该目录内
+4. 在`backend.py`中添加对`newllm`的支持

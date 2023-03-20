@@ -55,9 +55,6 @@ class Bot:
     def reset(self, **kwargs):
         return None
 
-    def reset(self, **kwargs):
-        pass
-
     def close(self, **kwargs):
         self.status = "close"
         pass
