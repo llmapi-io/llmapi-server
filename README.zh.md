@@ -1,4 +1,11 @@
-# llmapi-server
+<p align="center">
+  <img width="180" src="https://avatars.githubusercontent.com/u/127706964?s=200&v=4" alt="LLMApi Server">
+  <h1 align="center">LLMApi Server</h1>
+  <p align="center">可自托管的LLMApi服务端</p>
+</p>
+
+
+# 介绍
 llmapi-server 是一个封装了多种大语言模型(LLM，如ChatGPT,GPT-3,GPT-4等)的抽象后端，并通过OpenAPI提供简单的访问服务
 
 ## 安装和运行

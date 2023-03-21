@@ -1,7 +1,14 @@
-# llmapi-server
-llmapi-server is an abstract backend that encapsulates a variety of large language models (LLM, such as ChatGPT, GPT-3, GPT-4, etc.), and provides simple access services through OpenAPI
+<p align="center">
+  <img width="180" src="https://avatars.githubusercontent.com/u/127706964?s=200&v=4" alt="LLMApi Server">
+  <h1 align="center">LLMApi Server</h1>
+  <p align="center">Self-host llmapi server</p>
+</p>
 
-[中文](README.zh.md)
+# Introdution
+
+[中文文档](README.zh.md)
+
+llmapi-server is an abstract backend that encapsulates a variety of large language models (LLM, such as ChatGPT, GPT-3, GPT-4, etc.), and provides simple access services through OpenAPI
 
 ## Install & Run
 
