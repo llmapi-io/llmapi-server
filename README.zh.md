@@ -14,7 +14,7 @@ llmapi-server 是一个封装了多种大语言模型(LLM，如ChatGPT,GPT-3,GPT
 ``` shell
 # python >= 3.8
 python3 -m pip install -r requirements.txt
-
+mkdir logs
 python3 run_api_server.py
 ```
 

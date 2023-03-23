@@ -16,7 +16,7 @@ llmapi-server is an abstract backend that encapsulates a variety of large langua
 ``` shell
 # python >= 3.8
 python3 -m pip install -r requirements.txt
-
+mkdir logs
 python3 run_api_server.py
 ```
 
