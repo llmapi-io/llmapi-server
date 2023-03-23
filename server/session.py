@@ -18,7 +18,7 @@ class Session:
         def add_conversation(self, user, assistant):
             self.history.append([user, assistant])
             self.total_len += len(user) + len(assistant)
-            while self.total_len > 500:
+            while self.total_len > 1000:
                 self.pop_conversation()
         def pop_conversation(self):
             earliest = self.history.pop(0)
