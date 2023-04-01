@@ -1,0 +1,14 @@
+{
+	"gpt3": [
+		"sk-your-openai-apikey"
+	],
+	"chatgpt": [
+		"sk-your-openai-apikey"
+	],
+	"welm": [
+		"your-welm-apikey"
+	],
+	"newbing": [
+		"/path/to/you/new_bing/cookies/file"
+	]
+}
