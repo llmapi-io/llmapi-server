@@ -2,6 +2,7 @@ from pydantic import BaseModel
 
 class MsgChatStart(BaseModel):
     bot_type:str
+    settings:dict = None
 
 class MsgChatEnd(BaseModel):
     session:str

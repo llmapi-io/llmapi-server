@@ -12,7 +12,6 @@ import random
 class Session:
     class Conversations:
         def __init__(self) -> None:
-            self.system = ""
             self.history = []
             self.total_len = 0
         def add_conversation(self, user, assistant):
@@ -24,7 +23,7 @@ class Session:
             earliest = self.history.pop(0)
             self.total_len -= len(earliest[0]) + len(earliest[1])
 
-    def __init__(self, bot_type, ts, nonce):
+    def __init__(self, bot_type, ts, nonce, system = None):
         self.bot_type = bot_type
         self.ts = ts
         self.nonce = nonce
@@ -35,7 +34,7 @@ class Session:
             self.bot = LLMBackend(bot_type,api_key = key)
         elif bot_type == 'chatgpt':
             key = CHATGPT_KEYS[random.randint(0,len(CHATGPT_KEYS) - 1)]
-            self.bot = LLMBackend(bot_type,api_key = key)
+            self.bot = LLMBackend(bot_type,api_key = key, system = system)
         elif bot_type == 'welm':
             key = WELM_KEYS[random.randint(0,len(WELM_KEYS) - 1)]
             self.bot = LLMBackend(bot_type,api_key = key)

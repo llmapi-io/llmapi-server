@@ -25,7 +25,11 @@ async def _chat_start(msg:MsgChatStart, request:Request):
         return {"code":sc.BOT_TYPE_INVALID.code,"msg":sc.BOT_TYPE_INVALID.msg}
 
     # gen session
-    session = Session(bottype, time.time(), get_rand_code(3))
+    if 'system' in msg.settings:
+        system = msg.settings['system']
+    else:
+        system = None
+    session = Session(bottype, time.time(), get_rand_code(3), system=system)
     sessions[session.get_id()] = session
     
     logger.info(f"get session {session.get_id()}")
