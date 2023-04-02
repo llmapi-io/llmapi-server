@@ -7,6 +7,10 @@ class BotChatGPT(Bot):
         super().__init__(**kwargs)
         if 'api_key' in kwargs:
             openai.api_key = kwargs['api_key']
+        if 'system' in kwargs and kwargs['system'] is not None:
+            self.system = kwargs['system']
+        else:
+            self.system = 'You are a helpful assistant.'
         self.status = "open"
         
     def open(self, **kwargs):
@@ -17,6 +21,7 @@ class BotChatGPT(Bot):
     def task_impl(self, prompt:str, history:dict = None, **kwargs) -> str:
         try:
             messages=[]
+            messages.append({'role': 'system', 'content': self.system})
             for h in history:
                 messages.append({'role': 'user', 'content': h[0]})
                 messages.append({'role': 'assistant', 'content': h[1]})
