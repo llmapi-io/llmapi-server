@@ -25,7 +25,7 @@ async def _chat_start(msg:MsgChatStart, request:Request):
         return {"code":sc.BOT_TYPE_INVALID.code,"msg":sc.BOT_TYPE_INVALID.msg}
 
     # gen session
-    if 'system' in msg.settings:
+    if msg.settings is not None and 'system' in msg.settings:
         system = msg.settings['system']
     else:
         system = None
