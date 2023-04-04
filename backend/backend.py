@@ -5,6 +5,7 @@ from backend.gpt3.gpt3 import BotGPT3
 from backend.mock.mock import BotMock
 from backend.welm.welm import BotWelm
 from backend.newbing.newbing import BotNewBing
+from backend.chatgpt.embedding import BotGPTEmbedding
 
 class LLMBackend():
     def __init__(self, bottype = 'mock', **kwargs):
@@ -16,6 +17,8 @@ class LLMBackend():
             self.bot = BotWelm(**kwargs)
         elif bottype == 'newbing':
             self.bot = BotNewBing(**kwargs)
+        elif bottype == 'gpt-embedding':
+            self.bot = BotGPTEmbedding(**kwargs)
         else:
             self.bot = BotMock(**kwargs)
 

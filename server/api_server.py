@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from starlette.requests import Request
 
-from utils.utils import get_logger, get_rand_code
+from utils.utils import get_logger
 
 from server.config import SupportBotTyps
 from server.errcode import StatusCode as sc
@@ -12,7 +12,7 @@ import time
 import asyncio
 import logging
 
-app = FastAPI(docs_url=None, redoc_url=None)
+app = FastAPI()
 sessions = {}
 logger = get_logger('api_server',"logs/api_server.log",logging.INFO)
 
@@ -24,14 +24,19 @@ async def _chat_start(msg:MsgChatStart, request:Request):
         logger.error(f"bot type {bottype} not support")
         return {"code":sc.BOT_TYPE_INVALID.code,"msg":sc.BOT_TYPE_INVALID.msg}
 
-    # gen session
-    if msg.settings is not None and 'system' in msg.settings:
-        system = msg.settings['system']
-    else:
-        system = None
-    session = Session(bottype, time.time(), get_rand_code(3), system=system)
+    system = None
+    model = None
+    if msg.settings is not None:
+        if 'system' in msg.settings:
+            system = msg.settings['system']
+            logger.info(f"system:{system}")
+        if 'model' in msg.settings:
+            model = msg.settings['model']
+            logger.info(f"model:{model}")
+
+    session = Session(bottype, model = model, system = system)
     sessions[session.get_id()] = session
-    
+
     logger.info(f"get session {session.get_id()}")
     return {"code":sc.OK.code,"msg":sc.OK.msg,"session":f"{session.get_id()}"}
 
@@ -68,7 +73,6 @@ async def _chat_ask(msg:MsgChatAsk, request:Request):
 
     session = sessions[session_id]
 
-    # TODO send text and stub to chat bot
     bot = session.get_bot()
     if bot is None:
         logger.error(f"chat ask,ip:{request.client.host},bot none")

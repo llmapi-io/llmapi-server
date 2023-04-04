@@ -5,6 +5,9 @@
 	"chatgpt": [
 		"sk-your-openai-apikey"
 	],
+	"gpt-embedding": [
+		"sk-your-openai-apikey"
+	],
 	"welm": [
 		"your-welm-apikey"
 	],

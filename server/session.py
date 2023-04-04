@@ -1,5 +1,5 @@
-from utils.utils import get_short_hash
-from server.config import GPT3_KEYS, CHATGPT_KEYS, WELM_KEYS, NEWBING_KEYS
+from utils.utils import get_short_hash, get_rand_code
+from server.config import *
 
 from backend.backend import LLMBackend
 from prepost.app import app_employ
@@ -12,6 +12,7 @@ import random
 class Session:
     class Conversations:
         def __init__(self) -> None:
+            self.system = ""
             self.history = []
             self.total_len = 0
         def add_conversation(self, user, assistant):
@@ -23,24 +24,30 @@ class Session:
             earliest = self.history.pop(0)
             self.total_len -= len(earliest[0]) + len(earliest[1])
 
-    def __init__(self, bot_type, ts, nonce, system = None):
+    def __init__(self, bot_type:str, model:str = None, system:str = None):
         self.bot_type = bot_type
-        self.ts = ts
-        self.nonce = nonce
+        self.ts = time.time()
+        self.nonce = get_rand_code(3)
+        self.model = model
+        self.system = system
+
         self.app = Direct()
 
         if bot_type == 'gpt3':
-            key = GPT3_KEYS[random.randint(0,len(GPT3_KEYS) - 1)]
-            self.bot = LLMBackend(bot_type,api_key = key)
+            key = GPT3_KEYS[random.randint(0, len(GPT3_KEYS) - 1)]
+            self.bot = LLMBackend(bot_type, api_key = key)
         elif bot_type == 'chatgpt':
-            key = CHATGPT_KEYS[random.randint(0,len(CHATGPT_KEYS) - 1)]
-            self.bot = LLMBackend(bot_type,api_key = key, system = system)
+            key = CHATGPT_KEYS[random.randint(0, len(CHATGPT_KEYS) - 1)]
+            self.bot = LLMBackend(bot_type, api_key = key, system = self.system)
         elif bot_type == 'welm':
-            key = WELM_KEYS[random.randint(0,len(WELM_KEYS) - 1)]
-            self.bot = LLMBackend(bot_type,api_key = key)
+            key = WELM_KEYS[random.randint(0, len(WELM_KEYS) - 1)]
+            self.bot = LLMBackend(bot_type, api_key = key)
         elif bot_type == 'newbing':
-            key = NEWBING_KEYS[random.randint(0,len(NEWBING_KEYS) - 1)]
-            self.bot = LLMBackend(bot_type,api_key = key)
+            key = NEWBING_KEYS[random.randint(0, len(NEWBING_KEYS) - 1)]
+            self.bot = LLMBackend(bot_type, api_key = key)
+        elif bot_type == 'gpt-embedding':
+            key = GPT_EMBEDDING_KEYS[random.randint(0, len(GPT_EMBEDDING_KEYS) - 1)]
+            self.bot = LLMBackend(bot_type, api_key = key, model = self.model)
         else:
             self.bot = LLMBackend(bot_type)
 
