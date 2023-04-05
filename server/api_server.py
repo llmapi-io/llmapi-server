@@ -59,7 +59,7 @@ async def _chat_ask(msg:MsgChatAsk, request:Request):
     session_id = msg.session
     to = msg.timeout
     prompt = msg.content
-    logger.info(f"chat ask, ip:{request.client.host}, session:{session_id}, to:{to}, prompt:{prompt}")
+    logger.info(f"chat ask, ip:{request.client.host}, session:{session_id}, timeout:{to}")
     if type(to) is int:
         to = 5 if to < 5 else to
         to = 120 if to > 120 else to
