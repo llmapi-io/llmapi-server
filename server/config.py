@@ -1,6 +1,6 @@
 LOG_FILE_ROOT='logs'
 
-SupportBotTyps = ['mock','gpt3','chatgpt','welm', "newbing", "gpt-embedding"]
+SupportBotTyps = ['mock','gpt3','chatgpt','welm', "newbing", "gpt-embedding", "dall-e"]
 
 # read from config json
 GPT3_KEYS = ['']
@@ -8,6 +8,7 @@ CHATGPT_KEYS = ['']
 WELM_KEYS = ['']
 NEWBING_KEYS = ['']
 GPT_EMBEDDING_KEYS = ['']
+DALLE_KEYS = ['']
 
 def config_init():
     import json
@@ -16,6 +17,7 @@ def config_init():
     global WELM_KEYS
     global NEWBING_KEYS
     global GPT_EMBEDDING_KEYS
+    global DALLE_KEYS
 
     with open('configs/keys.json') as f:
         js = json.load(f)
@@ -24,3 +26,4 @@ def config_init():
         WELM_KEYS = js['welm']
         NEWBING_KEYS = js['newbing']
         GPT_EMBEDDING_KEYS = js['gpt-embedding']
+        DALLE_KEYS = js['dall-e']

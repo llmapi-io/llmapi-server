@@ -10,6 +10,14 @@
 
 llmapi-server is an abstract backend that encapsulates a variety of large language models (LLM, such as ChatGPT, GPT-3, GPT-4, etc.), and provides simple access services through OpenAPI
 
+## Supportted backend
+1. `chatgpt`: openai's official ChatGPT interface
+2. `gpt3`: openai's official GPT-3 interface
+3. `gpt-embedding`: openai's official Embedding interface
+4. `dall-e`: openai's official DALL·E interface
+5. `welm`: wechat's llm interface
+6. `newbing`: New Bing search based on ChatGPT（unofficial)
+
 ## Install & Run
 
 1. run locally

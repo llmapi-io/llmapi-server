@@ -6,6 +6,7 @@ from backend.mock.mock import BotMock
 from backend.welm.welm import BotWelm
 from backend.newbing.newbing import BotNewBing
 from backend.chatgpt.embedding import BotGPTEmbedding
+from backend.dalle.dalle import BotDALLE
 
 class LLMBackend():
     def __init__(self, bottype = 'mock', **kwargs):
@@ -19,6 +20,8 @@ class LLMBackend():
             self.bot = BotNewBing(**kwargs)
         elif bottype == 'gpt-embedding':
             self.bot = BotGPTEmbedding(**kwargs)
+        elif bottype == 'dall-e':
+            self.bot = BotDALLE(**kwargs)
         else:
             self.bot = BotMock(**kwargs)
 

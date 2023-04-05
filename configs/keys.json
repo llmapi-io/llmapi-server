@@ -8,6 +8,9 @@
 	"gpt-embedding": [
 		"sk-your-openai-apikey"
 	],
+	"dall-e": [
+		"sk-your-openai-apikey"
+	],
 	"welm": [
 		"your-welm-apikey"
 	],
