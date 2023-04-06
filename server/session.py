@@ -12,7 +12,6 @@ import random
 class Session:
     class Conversations:
         def __init__(self) -> None:
-            self.system = ""
             self.history = []
             self.total_len = 0
         def add_conversation(self, user, assistant):
