@@ -3,3 +3,4 @@ uvicorn
 fastapi
 openai
 EdgeGPT
+numpy
