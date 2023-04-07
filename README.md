@@ -10,6 +10,8 @@
 
 llmapi-server is an abstract backend that encapsulates a variety of large language models (LLM, such as ChatGPT, GPT-3, GPT-4, etc.), and provides simple access services through OpenAPI
 
+:star2: If it is helpful to you,please star it :star2:
+
 ## Diagram
 
 ```mermaid
@@ -33,7 +35,7 @@ others--> OpenAPI
 
 ```
 
-## Supportted backend
+## :sparkles: Supportted backends
 1. `chatgpt`: openai's official ChatGPT interface
 2. `gpt3`: openai's official GPT-3 interface
 3. `gpt-embedding`: openai's official Embedding interface
@@ -44,7 +46,7 @@ others--> OpenAPI
 ## Install & Run
 
 1. run locally
-``` shell
+ ``` shell
 # python >= 3.8
 python3 -m pip install -r requirements.txt
 
