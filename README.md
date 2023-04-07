@@ -36,12 +36,19 @@ others--> OpenAPI
 ```
 
 ## :sparkles: Supportted backends
-1. `chatgpt`: openai's official ChatGPT interface
-2. `gpt3`: openai's official GPT-3 interface
-3. `gpt-embedding`: openai's official Embedding interface
-4. `dall-e`: openai's official DALL·E interface
-5. `welm`: wechat's llm interface
-6. `newbing`: New Bing search based on ChatGPT（unofficial)
+- [x] `chatgpt`: openai's official ChatGPT interface
+- [x] `gpt3`: openai's official GPT-3 interface
+- [x] `gpt-embedding`: openai's official Embedding interface
+- [x] `dall-e`: openai's official DALL·E interface
+- [x] `welm`: wechat's llm interface
+- [x] `newbing`: New Bing search based on ChatGPT（unofficial)
+
+
+### ⏳ WIP
+- [ ] llama
+- [ ] stable diffusion
+- [ ] controlNet
+- [ ] SAM(meta)
 
 ## Install & Run
 
