@@ -4,11 +4,34 @@
   <p align="center">Self-host llmapi server</p>
 </p>
 
-# Introdution
+## Introdution
 
 [中文文档](README.zh.md)
 
 llmapi-server is an abstract backend that encapsulates a variety of large language models (LLM, such as ChatGPT, GPT-3, GPT-4, etc.), and provides simple access services through OpenAPI
+
+## Diagram
+
+```mermaid
+graph LR
+
+subgraph llmapi server
+OpenAPI --> session
+OpenAPI --> pre_post
+subgraph backend
+style backend fill:#f9f
+pre_post-->chatgpt
+pre_post-->dall-e
+pre_post-->llama
+pre_post-->...
+end
+end
+text-->OpenAPI
+image-->OpenAPI
+embedding-->OpenAPI
+others--> OpenAPI
+
+```
 
 ## Supportted backend
 1. `chatgpt`: openai's official ChatGPT interface

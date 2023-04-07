@@ -5,8 +5,31 @@
 </p>
 
 
-# 介绍
+## 介绍
 llmapi-server 是一个封装了多种大语言模型(LLM，如ChatGPT,GPT-3,GPT-4等)的抽象后端，并通过OpenAPI提供简单的访问服务
+
+## 框图
+
+```mermaid
+graph LR
+
+subgraph llmapi server
+OpenAPI --> session
+OpenAPI --> pre_post
+subgraph backend
+style backend fill:#f9f
+pre_post-->chatgpt
+pre_post-->dall-e
+pre_post-->llama
+pre_post-->...
+end
+end
+text-->OpenAPI
+image-->OpenAPI
+embedding-->OpenAPI
+others--> OpenAPI
+
+```
 
 ## 已支持的后端
 1. `chatgpt`: openai官方ChatGPT接口
