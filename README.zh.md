@@ -8,6 +8,8 @@
 ## 介绍
 llmapi-server 是一个封装了多种大语言模型(LLM，如ChatGPT,GPT-3,GPT-4等)的抽象后端，并通过OpenAPI提供简单的访问服务
 
+:star2: 如果这个项目对您有帮助，欢迎添加star :star2:
+
 ## 框图
 
 ```mermaid
@@ -31,13 +33,19 @@ others--> OpenAPI
 
 ```
 
-## 已支持的后端
-1. `chatgpt`: openai官方ChatGPT接口
-2. `gpt3`: openai官方GPT-3接口
-3. `gpt-embedding`: openai官方embedding接口
-4. `dall-e`: openai官方DALL·E接口
-5. `welm`: 微信团队大模型接口
-6. `newbing`: 基于ChatGPT的新Bing搜索接口（非官方)
+## :sparkles: 已支持的后端
+- [x]  `chatgpt`: openai官方ChatGPT接口
+- [x] `gpt3`: openai官方GPT-3接口
+- [x] `gpt-embedding`: openai官方embedding接口
+- [x] `dall-e`: openai官方DALL·E接口
+- [x] `welm`: 微信团队大模型接口
+- [x] `newbing`: 基于ChatGPT的新Bing搜索接口（非官
+
+### ⏳ WIP
+- [ ] llama
+- [ ] stable diffusion
+- [ ] controlNet
+- [ ] SAM(meta)
 
 ## 安装和运行
 
